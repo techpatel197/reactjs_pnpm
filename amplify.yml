@@ -10,7 +10,6 @@ frontend:
         - nvm use 22
         - pnpm --version
         - echo "Installing dependencies"
-        - pnpm install --frozen-lockfile
         - echo "Installing TailwindCSS, PostCSS, Autoprefixer"
         - pnpm add -D @tailwindcss/postcss postcss autoprefixer
         - npx tailwindcss init
