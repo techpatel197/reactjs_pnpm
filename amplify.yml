@@ -3,22 +3,15 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "Enable corepack for pnpm"
-        - corepack enable
-        - corepack prepare pnpm@latest --activate
+        - echo "Install Node 22"
         - nvm install 22
         - nvm use 22
+        - echo "Enable Corepack for pnpm"
+        - corepack enable
+        - corepack prepare pnpm@latest --activate
         - pnpm --version
-        - echo "Installing dependencies"
-        - echo "Installing TailwindCSS, PostCSS, Autoprefixer"
-        - pnpm add -D @tailwindcss/postcss postcss autoprefixer
-        - npx tailwindcss init
-        - echo "Installing React 18"
-        - pnpm add --save-exact react@^18.2.0 react-dom@^18.2.0
-        - npx update-browserslist-db@latest
-        - echo "Setting up Husky"
-        - pnpm add -D husky
-        - npx husky install
+        - echo "Install project dependencies"
+        - pnpm install
     build:
       commands:
         - echo "Building the application"
