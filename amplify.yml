@@ -1,0 +1,23 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - corepack enable
+        - nvm install 22
+        - nvm use 22
+        - corepack prepare pnpm@latest --activate
+        - pnpm --version
+        - pnpm install --frozen-lockfile
+    build:
+      commands:
+        - pnpm run build
+  artifacts:
+    # For Vite
+    baseDirectory: dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**    # speeds up builds
+      - ~/.pnpm-store/**   # pnpm store cache
