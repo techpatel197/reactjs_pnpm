@@ -7,8 +7,10 @@ frontend:
         - nvm install 22
         - nvm use 22
         - corepack prepare pnpm@latest --activate
-        - pnpm --version
-        - pnpm install --frozen-lockfile
+        - echo "Cleaning old node_modules and lockfile"
+        - rm -rf node_modules pnpm-lock.yaml
+        - echo "Installing dependencies fresh"
+        - pnpm install
     build:
       commands:
         - pnpm run build
